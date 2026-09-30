@@ -1,0 +1,16 @@
+{
+  "name": "dsh-read-office-noshell",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "读取 Word / Excel / PowerPoint / PDF / 图片的工具（read_document_noshell）：出文本 + 抽出内嵌图片交给多模态模型看图，零依赖，宿主内运行；为无 shell 预设准备：模型侧不需要 Python，也不需要起任何命令。",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+# dsh-read-office-noshell 的装载补丁。
+#
+# 只插入一行：把 read_document_noshell 注册进宿主 `tools` 注册表。
+# 本插件不发布服务（没有对外消费者），所以不需要 isolate realm，也不改动任何出厂行。
+#
+# 边界（由插件代码强制，不靠宪法自觉）—— 这个插件只为「解析上传的二进制附件」存在：
+#   能读：① IM 上传件 <root>/.dsh-im/inbound/**；② GUI 上传件 <DSH_HOME>/attachments/v1/files/**
+#   不给读：其它一切（包括工作区里的普通文件 —— 那些用 read / read_image）
+#   能写：只往 <root>/<imageDir>/ 下写抽出来的图片，别的什么都不写
+- insert:
+    - id: read-office-noshell
+      name: 'dsh-read-office-noshell'
+      disabled: true
